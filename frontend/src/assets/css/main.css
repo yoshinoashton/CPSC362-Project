@@ -1,0 +1,163 @@
+/* General CSS */
+
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  border: none;
+  box-sizing: border-box;
+  outline: none;
+  font-family: "Times New Roman", Times, serif;
+  font-size: medium;
+}
+
+ul { 
+  list-style: none;
+}
+
+a {
+  color: black;
+  padding: 10px;
+  width: 100%;
+}
+
+a:hover {
+  background-color: darkgray;
+  border-radius: 5px;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+/* Template Layout */
+
+/* Header Bar */
+
+.header__container {
+  margin: auto;
+  max-width: 1440px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  background-color: lightgray;
+}
+
+.header__left {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.header__right {
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+}
+
+.header__lists {
+  display: flex;
+}
+
+.header__list {
+  margin-right: 15px;
+}
+
+.header__button {
+  font-size: large;
+}
+
+
+/* Side Navigation */
+.navigation__container {
+  background-color: purple;
+  height: 500px;
+  width: 150px;
+  padding-top: 10px;
+}
+
+.navigation__list {
+  padding: 10px;
+}
+
+/* Footer */
+.footer {
+  background-color: grey;
+}
+
+/* Home Page */
+.layout-body {
+  display: flex;
+}
+
+.home_page {
+  flex-grow: 1;
+  background-color: gold;
+}
+
+.listings {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  padding: 25px;
+}
+
+.listing-box {
+  margin-left: 15px;
+  margin-top: 15px;
+  align-items: center;
+  text-align: center;
+  padding: 5px;
+  width: 250px;
+  background-color: blue;
+}
+
+.listing-box-img {
+  margin-top: 10px;
+  width: 90%;
+  height: 80%;
+  background-color: white;
+}
+
+/* Listing */
+.listing-container {
+  display:flex;
+  padding: 20px;
+}
+
+.listing-container img {
+  height: 75%;
+}
+
+.listing-details {
+  margin-left: 20px;
+}
+
+/* Login */
+.login-page * {
+  text-align: center;
+  border: 1px solid black;
+}
+
+.login-form {
+  width: 500px;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.login-container {
+  padding: 20px;
+  width: 500px;
+}
+
+.login-container * {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 15px;
+  width: 275px;
+}
+
+
