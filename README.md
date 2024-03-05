@@ -12,3 +12,17 @@ PalTrade-Hub is an innovative online platform inspired by the engaging gameplay 
 Why PalTrade-Hub?
 
 - Combining the thrill of Palworld's creature collecting with the practicality of online marketplaces, PalTrade-Hub addresses the needs of a growing community looking for a dedicated space to trade and interact. Whether you're a seasoned Palworld player seeking rare Pals or a newcomer looking to start your adventure, PalTrade-Hub offers a welcoming and supportive environment for all.
+
+# Set-up
+
+1. Install node.js
+2. Install npm
+3. Create backend/.env file
+     PORT=YOUR-PORT
+     MONGO_URI=REPLACE-W-URI
+4. Start backend
+     cd backend/
+     npm run dev
+5. Start frontend 
+     cd frontend/
+     npm start
