@@ -9,6 +9,7 @@ export default function Home() {
 
   useEffect(() => {
     const fetchListings = async () => {
+      console.log('working')
       const response = await fetch('/api/listings');
 
       if (!response.ok) {
@@ -16,12 +17,15 @@ export default function Home() {
         window.alert(message);
         return;
       }
-
+      console.log('working 1');
+      console.log(response);
       const listings = await response.json();
       if (!listings) {
         window.alert('Error: Unable to load listing JSON data. :(');
         return;
       }
+
+      console.log('working 2');
 
       setListings(listings);
     }
@@ -29,6 +33,8 @@ export default function Home() {
     fetchListings();
   }, []);
 
+
+  console.log(listings);
 
   return (
     <Layout>
