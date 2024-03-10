@@ -9,11 +9,11 @@ export default function SideNavigation() {
           <li className="navigation__list">
             <Link className="navigation__button" to="/">Browse Pals</Link>
           </li>
-          <li className="navigation__list">
-            <Link className="navigation__button" to="/trade">Trade</Link>
-          </li>
           <li className='navigation__list'>
             <Link className='navigation__button' to="/listing/create">Create Listing</Link>
+          </li>
+          <li className="navigation__list">
+            <Link className="navigation__button" to="/user/inventory">Inventory</Link>
           </li>
           <li className='navigation__list'>
             <Link className='navigation__button' to="/user/">Your Account</Link>

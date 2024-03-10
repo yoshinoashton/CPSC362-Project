@@ -7,6 +7,7 @@ import LoginPage from './pages/Login';
 import ListingCreate from './pages/ListingCreate';
 import Listing from './pages/Listing';
 import SignUp from './pages/SignUp';
+import Inventory from './pages/Inventory';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path='/' element={<Home />}/>
             <Route path='/listing/:id' element={<Listing />}/>
             <Route path='/listing/create' element={<ListingCreate />}/>
+            <Route path='/user/inventory' element={<Inventory />}/>
             <Route path='/login' element={<LoginPage/>}/>
             <Route path='/signup' element={<SignUp />}/>
           </Routes>
