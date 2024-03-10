@@ -21,7 +21,6 @@ a {
   width: 100%;
 }
 
-
 a:visited {
   text-decoration: none;
 }
@@ -32,7 +31,6 @@ a:visited {
 
 .header__container {
   margin: auto;
-  max-width: 1440px;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -105,13 +103,18 @@ a:visited {
   padding: 25px;
 }
 
+.listing-box:hover {
+  background-color: darkgray;
+}
+
 .listing-box {
+  flex: 1 0 21%;
+  max-width: calc(20% - 15px);
   margin-left: 15px;
   margin-top: 15px;
   align-items: center;
   text-align: center;
   padding: 5px;
-  width: 250px;
   border-radius: 5px;
   background-color: #EBE3D5;
 }
@@ -141,6 +144,10 @@ a:visited {
 .login-page * {
   text-align: center;
   align-items: center;
+}
+
+.login-page input {
+  text-align: left;
 }
 
 .login-form {
