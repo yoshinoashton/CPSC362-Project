@@ -1,9 +1,11 @@
-import React from 'react';
+import { React } from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import SideNavigation from './Navigation';
 
 export default function Layout({children}) {
+
+
   return (
     <div className="layout">
       <Header />

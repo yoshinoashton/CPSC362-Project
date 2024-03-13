@@ -1,9 +1,13 @@
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
+import { useContext, useState } from 'react';
 
 import Footer from "../components/Footer";
-import { useState } from 'react';
+import { UserContext } from '../context/userContext';
+
 
 export default function LoginPage() {
+  const context = useContext(UserContext);
+
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [response, setResponse] = useState('');
@@ -18,24 +22,33 @@ export default function LoginPage() {
     e.preventDefault();
     console.log(username, password);
 
+    const data = {
+      "username": username,
+      "password": password
+    }
+
     const response = await fetch('/api/account/login', {
       method: 'post',
-      body: {
-        "username": username,
-        "password": password
-      }
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
     });
-
 
     if (!response.ok) {
       return;
     } else {
       const data = await response.json();
-      console.log(data);
-      setResponse(data);
+      if (data.success) {
+        localStorage.setItem("token", data.token);
+        context.setToken(data.token);
+        context.setUser(data.user);
+        setResponse(data);
+      } else {
+        setResponse(data);
+      }
     }
   });
-
 
   return (  
     <>
@@ -51,7 +64,12 @@ export default function LoginPage() {
           <br/><br/>
           <button type='submit'>Login</button>
         </div>
-        <p>{response}</p>
+        {!response.success && (
+          <p>{response.message}</p>
+        )}
+        {response.success && (
+          <Navigate to="/" replace={true} />
+        )}
         <p>OR</p>
         <Link to='/signup'>Sign Up</Link>
       </form>

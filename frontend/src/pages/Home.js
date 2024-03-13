@@ -22,16 +22,11 @@ export default function Home() {
         return;
       }
 
-      console.log('working 2');
-
       setListings(listings);
     }
 
     fetchListings();
   }, []);
-
-
-  console.log(listings);
 
   return (
     <Layout>

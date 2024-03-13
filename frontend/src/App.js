@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, useParams } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 // pages & components
 import './assets/css/main.css';
@@ -7,10 +7,13 @@ import LoginPage from './pages/Login';
 import ListingCreate from './pages/ListingCreate';
 import Listing from './pages/Listing';
 import SignUp from './pages/SignUp';
-//import Inventory from './pages/Inventory';
+import User from './pages/User'
+import Inventory from './pages/Inventory.js';
+import { UserContextProvider } from './context/userContext.js';
 
 function App() {
   return (
+    <UserContextProvider>
     <div className="App">
       <BrowserRouter>
         <div className="pages">
@@ -20,10 +23,13 @@ function App() {
             <Route path='/listing/create' element={<ListingCreate />}/>
             <Route path='/login' element={<LoginPage/>}/>
             <Route path='/signup' element={<SignUp />}/>
+            <Route path='/user/:id' element={<User />}/>
+            <Route path='/user/:id/inventory' element={<Inventory />}/>
           </Routes>
         </div>
       </BrowserRouter>
     </div>
+    </UserContextProvider>
   );
 }
 

@@ -14,27 +14,32 @@ export default function LoginPage() {
 
 
   // on submit button click
-  const handleLogin = (async (e) => {
+  const handleSignUp = (async (e) => {
 
     e.preventDefault();
-    console.log(username, password);
+
+    const data = {
+      "email": email,
+      "username": username,
+      "password": password
+    }
 
     const response = await fetch('/api/account/signup', {
       method: 'post',
-      body: {
-        "email": email,
-        "username": username,
-        "password": password
-      }
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
     });
 
 
     if (!response.ok) {
+      console.log('response invalid');
       return;
     } else {
       const data = await response.json();
-      console.log(data);
-      setResponse(data);
+      // console.log(data);
+      setResponse(data.message);
     }
   });
 
@@ -42,7 +47,7 @@ export default function LoginPage() {
   return (  
     <>
     <div className="login-page">
-      <form className='login-form' onSubmit={handleLogin}>
+      <form className='login-form' onSubmit={handleSignUp}>
         <h1>PalTrade Hub</h1>
         <div className='login-container'>
         <input type='text' id='email' name='email' placeholder='Email'
