@@ -32,7 +32,7 @@ const createListing = async (req, res) => {
   console.log(pal_name);
   try {
     // find pal
-    const pal = await Pal.find({name: pal_name});
+    const pal = await Pal.findOne({name: pal_name});
     // check if pal was found
     if (pal.length === 0) {
       return res.status(404).json({error: "Pal not found"});
@@ -41,7 +41,7 @@ const createListing = async (req, res) => {
     console.log(pal);
 
     // add to database
-    const listing = await Listing.create({ pal: pal[0], user_id, description, cost});
+    const listing = await Listing.create({ pal: pal, user_id, description, cost});
     res.status(200).json(listing);
   } catch (error) {
     console.error("Error creating listing", error);

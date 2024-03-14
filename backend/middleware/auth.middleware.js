@@ -1,11 +1,25 @@
-const Pal = require('../models/pal.model');
+const jwt = require("jsonwebtoken");
 
-const nameToID = (req, res, next) => {
-  const id = Pal.find({ name: req.body.pal_id});
-  if (!id) {
-    res.json({ error: "Unable to find ID of pal."})
-  } else {
-    req.pal_id = id;
-    next();
+require('dotenv').config();
+
+function verifyJWT(req, res, next) {
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1];
+
+
+  if (token) {
+    jwt.verify(token, process.env.JWT_SECRET, (error, decoded) => {
+      if (error) {
+        res.json({message: "Incorrect token", success: false});
+        return res.sendStatus(403);
+      }
+
+      req.user = decoded;
+      next();
+    })
   }
+}
+
+module.exports = {
+  verifyJWT
 };
