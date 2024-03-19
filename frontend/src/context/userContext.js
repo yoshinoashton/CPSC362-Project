@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from "react";
+import { authenticate } from "../utils";
 
 export const UserContext = createContext({});
 
@@ -7,7 +8,7 @@ export function UserContextProvider({children}) {
   const [token, setToken] = useState('');
 
   useEffect(() => {
-    const authenticate = async () => {
+    const loadData = async () => {
       if (!token) {
         const token = localStorage.getItem('token');
         setToken(token);
@@ -20,7 +21,8 @@ export function UserContextProvider({children}) {
       return;
     }
 
-    authenticate();
+    loadData();
+    authenticate(setUsername, setToken);
   }, [token, username]);
   
   return (

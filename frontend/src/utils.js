@@ -1,4 +1,4 @@
-const authenticate = async (setUserData, setToken) => {
+const authenticate = async (token, setLogin) => {
   const token = localStorage.getItem('token');
   setToken(token);
   const response = await fetch('/api/account/auth', {
@@ -19,7 +19,7 @@ const authenticate = async (setUserData, setToken) => {
     return;
   }
   
-  setUserData(user);
+  setUsername(user.username);
   return;
 }
 
