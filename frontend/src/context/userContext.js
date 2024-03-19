@@ -6,6 +6,7 @@ export const UserContext = createContext({});
 export function UserContextProvider({children}) {
   const [username, setUsername] = useState('')
   const [token, setToken] = useState('');
+  const [login, setLogin] = useState(false);
 
   useEffect(() => {
     const loadData = async () => {
@@ -15,18 +16,21 @@ export function UserContextProvider({children}) {
       }
 
       if (!username) {
-        const username = localStorage.getItem('user');
+        const username = localStorage.getItem('username');
         setUsername(username);
       }
+
+      authenticate(token, setLogin);
+      console.log("authenticated", username, login);
+      console.log(token);
       return;
     }
 
     loadData();
-    authenticate(setUsername, setToken);
   }, [token, username]);
   
   return (
-    <UserContext.Provider value={{username, token, setUsername, setToken}}>
+    <UserContext.Provider value={{username, token, login, setUsername, setToken, setLogin}}>
       {children}
     </UserContext.Provider>
   )

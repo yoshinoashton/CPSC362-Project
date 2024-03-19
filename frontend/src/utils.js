@@ -1,6 +1,8 @@
 const authenticate = async (token, setLogin) => {
-  const token = localStorage.getItem('token');
-  setToken(token);
+  if (!token) {
+    return;
+  }
+
   const response = await fetch('/api/account/auth', {
     headers: {
       'authorization': token
@@ -13,13 +15,16 @@ const authenticate = async (token, setLogin) => {
     return;
   }
 
-  const user = await response.json();
-  if (!user) {
+  const data = await response.json();
+  if (!data) {
     window.alert('Error: Unable to load user JSON data');
     return;
   }
-  
-  setUsername(user.username);
+
+  if (data.success) {
+    setLogin(true);
+  }
+
   return;
 }
 

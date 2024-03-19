@@ -17,7 +17,7 @@ export default function ListingPreview({ listing }) {
         </div>
         <div className='listing-box-traits'>
           {traits && traits.map(trait => (
-              <Trait trait={trait}/>
+              <Trait key={trait._id} trait={trait}/>
           ))}
         </div>
       </div>

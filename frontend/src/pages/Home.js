@@ -30,7 +30,7 @@ export default function Home() {
 
   return (
     <Layout>
-    <div className='home_page'>
+    <div className='home-page'>
       <div className='listings'>
         {listings && listings.map(listing => (
           <ListingPreview key={listing._id} listing={listing} />  

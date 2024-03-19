@@ -9,6 +9,7 @@ export default function Header() {
   function Logout() {
     context.setUsername('');
     context.setToken('');
+    context.setLogin(false);
     localStorage.removeItem('token');
     localStorage.removeItem('username');
   }
@@ -23,15 +24,15 @@ export default function Header() {
               <Link className="header__button" to="/">Pal Trade Hub</Link>
             </li>
           </ul>
-        </div>
+        </div>  
         
         <div className='header__right'>
           <ul className='header__lists'>
               <li className="header__list">
-                { context.token && (
+                { context.login && (
                   <button className="header__button" onClick={Logout}>Logout</button>
                 )}
-                { !context.token && (
+                { !context.login && (
                   <Link className="header__button" to="/login">Login</Link>
                 )}
               </li>

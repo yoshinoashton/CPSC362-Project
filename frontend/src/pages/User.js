@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 import Layout from "../components/Layout";
-import Select from 'react-select';
 
 export default function UserPage() {
   const params = useParams();
@@ -34,9 +33,8 @@ export default function UserPage() {
 
   return (
     <Layout>
-    <div className='user-page'>
+    <div className='user page'>
       <p>Hello, {userData.username}!</p>
-      <Select></Select>
     </div>
     </Layout>
   );

@@ -4,27 +4,9 @@ import { UserContext } from '../context/userContext';
 
 export default function SideNavigation() {
 
-  const { username }= useContext(UserContext);
+  const { login, username }= useContext(UserContext);
 
-  console.log(username);
-
-  if (!username) {
-    return (
-      <nav>
-      <div className='navigation__container'>
-        <ul>
-          <li className="navigation__list">
-            <Link className="navigation__button" to="/">Browse Pals</Link>
-          </li>
-          <li className='navigation__list'>
-            <Link className='navigation__button' to={"/login"}>Your Account</Link>
-          </li>
-        </ul>
-      </div>
-      </nav>
-    );
-
-  } else {
+  if (login && username) {
     return (
       <nav>
         <div className='navigation__container'>
@@ -43,6 +25,22 @@ export default function SideNavigation() {
             </li>
           </ul>
         </div>
+      </nav>
+    );
+
+  } else {
+    return (
+      <nav>
+      <div className='navigation__container'>
+        <ul>
+          <li className="navigation__list">
+            <Link className="navigation__button" to="/">Browse Pals</Link>
+          </li>
+          <li className='navigation__list'>
+            <Link className='navigation__button' to={"/login"}>Your Account</Link>
+          </li>
+        </ul>
+      </div>
       </nav>
     )
   }

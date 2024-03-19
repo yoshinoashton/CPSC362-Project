@@ -41,7 +41,9 @@ export default function ListingPage() {
 
   return (
     <Layout>
-      <ListingInfo listing={listing}/>
+      <div className='listing page'>
+        <ListingInfo listing={listing}/>
+      </div>
     </Layout>
   );
 }
