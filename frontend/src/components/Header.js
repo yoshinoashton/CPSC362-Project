@@ -7,9 +7,10 @@ export default function Header() {
   const context = useContext(UserContext);
 
   function Logout() {
-    context.setUser(null);
+    context.setUsername('');
     context.setToken('');
     localStorage.removeItem('token');
+    localStorage.removeItem('username');
   }
 
   return (

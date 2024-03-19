@@ -11,11 +11,7 @@ const getPals = async (req, res) => {
 const getPal = async (req, res) => {
   const { id } = req.params;
 
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).json({error: 'No such pal exists'});
-  }
-
-  const pal = await Pal.findById(id);
+  const pal = await Pal.findOne({name: id})
 
   if (!pal) {
     return res.status(404).json({error: 'No such pal exists'});

@@ -41,8 +41,9 @@ export default function LoginPage() {
       const data = await response.json();
       if (data.success) {
         localStorage.setItem("token", data.token);
+        localStorage.setItem("username", data.user.username);
         context.setToken(data.token);
-        context.setUser(data.user);
+        context.setUsername(data.user.username);
         setResponse(data);
       } else {
         setResponse(data);

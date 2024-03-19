@@ -1,14 +1,14 @@
 const mongoose = require('mongoose');
-const Pal = require('./pal.model').schema;
+const userPal = require('./userPal.model').schema;
 
 const Schema = mongoose.Schema;
 
 const listingSchema = new Schema({
-  pal: {
-    type: [Pal],
+  userPal: {
+    type: [userPal],
     required: true
   },
-  user_id: {
+  username: {
     type: String,
     required: true
   },

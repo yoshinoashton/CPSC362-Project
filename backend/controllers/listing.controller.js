@@ -1,5 +1,5 @@
 const Listing = require('../models/listing.model');
-const Pal = require('../models/pal.model');
+const UserPal = require('../models/userPal.model');
 const mongoose = require('mongoose');
 
 
@@ -26,28 +26,29 @@ const getListing = async (req, res) => {
   res.status(200).json(listing);
 }
 
-// CREATE a new listing
+// CREATE a new listing -- NEEDS USER AUTH
 const createListing = async (req, res) => {
-  const { pal_name, user_id, description, cost} = req.body;
-  console.log(pal_name);
+  const { userPal_id, username, description, cost} = req.body;
   try {
     // find pal
-    const pal = await Pal.findOne({name: pal_name});
+    const userPal = await UserPal.findById(userPal_id);
     // check if pal was found
-    if (pal.length === 0) {
-      return res.status(404).json({error: "Pal not found"});
+    if (!userPal) {
+      return res.status(404).json({error: "User Pal not found"});
     }
 
-    console.log(pal);
+    console.log(userPal);
 
     // add to database
-    const listing = await Listing.create({ pal: pal, user_id, description, cost});
+    const listing = await Listing.create({ userPal: userPal, username, description, cost});
     res.status(200).json(listing);
   } catch (error) {
     console.error("Error creating listing", error);
     res.status(400).json({ error: error.message});
   }
 }
+
+// DELETE listing -- NEEDS USER AUTH
 
 module.exports = {
   getListings,

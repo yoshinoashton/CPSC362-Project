@@ -18,7 +18,21 @@ const palSchema = new Schema({
   type: {
     type: String,
     required: true
-  }
+  },
+  partnerSkill: {
+    name: String,
+    description: String
+  },
+  skills: [{
+    name: String,
+    type: String,
+    min_level: Number
+  }],
+  workSuitability: [{
+    name: String,
+    level: Number,
+  }]
+
 });
 
 module.exports = mongoose.model('Pal', palSchema);

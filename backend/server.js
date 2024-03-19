@@ -11,6 +11,8 @@ const palRoutes = require('./routes/pals.route');
 const listingRoutes = require('./routes/listing.route');
 const authRoutes = require('./routes/auth.route');
 const userRoutes = require('./routes/user.route');
+const userPalRoutes = require('./routes/userPal.route');
+const traitRoutes = require('./routes/trait.route');
 
 // Create express app
 const app = express();
@@ -33,9 +35,11 @@ app.use((req, res, next) => {
 
 // routes
 app.use('/api/pals', palRoutes);
+app.use('/api/traits', traitRoutes)
 app.use('/api/listings', listingRoutes);
 app.use('/api/account', authRoutes);
 app.use('/api/user', userRoutes);
+app.use('/api/inventory', userPalRoutes);
 
 // connect to db
 mongoose.connect(process.env.MONGO_URI)

@@ -4,9 +4,11 @@ import { UserContext } from '../context/userContext';
 
 export default function SideNavigation() {
 
-  const {user} = useContext(UserContext);
+  const { username }= useContext(UserContext);
 
-  if (!user) {
+  console.log(username);
+
+  if (!username) {
     return (
       <nav>
       <div className='navigation__container'>
@@ -34,10 +36,10 @@ export default function SideNavigation() {
               <Link className='navigation__button' to="/listing/create">Create Listing</Link>
             </li>
             <li className="navigation__list">
-              <Link className="navigation__button" to={"/user/" + user.username +"/inventory"}>Inventory</Link>
+              <Link className="navigation__button" to={"/user/" + username +"/inventory"}>Inventory</Link>
             </li>
             <li className='navigation__list'>
-              <Link className='navigation__button' to={"/user/" + user.username}>Your Account</Link>
+              <Link className='navigation__button' to={"/user/" + username}>Your Account</Link>
             </li>
           </ul>
         </div>

@@ -3,7 +3,7 @@ import { createContext, useState, useEffect } from "react";
 export const UserContext = createContext({});
 
 export function UserContextProvider({children}) {
-  const [user, setUser] = useState(null);
+  const [username, setUsername] = useState('')
   const [token, setToken] = useState('');
 
   useEffect(() => {
@@ -13,33 +13,18 @@ export function UserContextProvider({children}) {
         setToken(token);
       }
 
-      const response = await fetch('/api/account/auth', {
-        headers: {
-          'authorization': token
-        }
-      });
-    
-      if (!response.ok) {
-        const message = `Error has occured: ${response.statusText}`;
-        window.alert(message);
-        return;
+      if (!username) {
+        const username = localStorage.getItem('user');
+        setUsername(username);
       }
-    
-      const user = await response.json();
-      if (!user) {
-        window.alert('Error: Unable to load user JSON data');
-        return;
-      }
-      
-      setUser(user);
       return;
     }
 
     authenticate();
-  }, [token]);
+  }, [token, username]);
   
   return (
-    <UserContext.Provider value={{user, token, setUser, setToken}}>
+    <UserContext.Provider value={{username, token, setUsername, setToken}}>
       {children}
     </UserContext.Provider>
   )
