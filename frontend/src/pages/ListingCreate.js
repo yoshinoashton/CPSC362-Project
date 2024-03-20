@@ -1,31 +1,38 @@
 import Layout from "../components/Layout";
-import React from 'react';
 import Select from 'react-select';
-import {useState} from 'react';
-
-const options = [
-  { value: 'chocolate', label: 'Chocolate' },
-  { value: 'strawberry', label: 'Strawberry' },
-  { value: 'vanilla', label: 'Vanilla' }
-]
+import React, { useState, useEffect } from 'react';
 
 export default function ListingCreate() {
-  const login = true;
-  if (!login) {
-    // prompt user to login
-  }
-  const [selectedOption, setSelectedOption] = useState('');
-  const handleChange = ((selectedOption) => {
+  const [selectedOption, setSelectedOption] = useState(null);
+  const [options, setOptions] = useState([]); // Initialize options state
+
+  useEffect(() => {
+    // Fetch data from the API
+    fetch(`/api/pals`)
+      .then(response => response.json())
+      .then(data => {
+        // Process data to fit react-select's expected format for options
+        const formattedOptions = data.map(item => ({
+          value: item._id, // Assuming _id is a unique identifier
+          label: item.name
+        }));
+        setOptions(formattedOptions);
+      })
+      .catch(error => console.error('Error fetching data:', error));
+  }, []); // Empty dependency array means this effect runs once on mount
+
+  const handleChange = (selectedOption) => {
     setSelectedOption(selectedOption);
-});
+  };
 
   return (
     <Layout>
       <div className="create-listing-page">
-        <select
-        options={options}
-        value={selectedOption}
-        onChange={handleChange}></select>
+        <Select
+          options={options}
+          value={selectedOption}
+          onChange={handleChange}>
+        </Select>
       </div>
     </Layout>
   );
