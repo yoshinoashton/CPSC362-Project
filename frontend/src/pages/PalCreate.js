@@ -100,7 +100,7 @@ export default function CreatePalPage() {
     }
 
     const traits = {};
-    formData.traits.map((trait, index) => traits[index] = trait.label );
+    formData.traits.map((trait, index) => {traits[index] = trait.label; return;} );
 
     const request = {
       "username": username,
@@ -151,7 +151,7 @@ export default function CreatePalPage() {
           </div>
           <div className='input-container level-container'>
             <label>Level</label><br/>
-            <input className='css-13cymwt-control level' type='number' name='level' id='level' min='1' max='50' onChange={handleChange}></input><br/>
+            <input className='css-13cymwt-control form-level' type='number' name='level' id='level' min='1' max='50' onChange={handleChange}></input><br/>
           </div>
         </div>
 

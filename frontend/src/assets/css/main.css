@@ -261,14 +261,17 @@ button {
 }
 
 .name-container {
-  flex: 4;
+  flex: 1 0;
 }
 
 .level-container {
-  flex-shrink: 2;
+  flex: 0 1;
+  max-width: 100px;
 }
 
-.create-pal-form .level {
+
+.create-pal-form .form-level {
+  max-width: 100px;
   height: 35px;
   padding: 10px;
   border-radius: 5px;
