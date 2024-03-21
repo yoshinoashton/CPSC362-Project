@@ -1,4 +1,4 @@
-const authenticate = async (token, setLogin) => {
+const authenticate = async (token, username) => {
   if (!token) {
     return;
   }
@@ -21,11 +21,11 @@ const authenticate = async (token, setLogin) => {
     return;
   }
 
-  if (data.success) {
-    setLogin(true);
+  if (data.success && data.username === username) {
+    return true;
   }
 
-  return;
+  return false;
 }
 
 module.exports = {

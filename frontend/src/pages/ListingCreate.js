@@ -8,7 +8,7 @@ export default function ListingCreate() {
 
   return (
     <Layout>
-      <div className="create-listing-page">
+      <div className="create-listing-container page">
         <form className="create-listing-form">
           <input type="text" id="title"/>
         </form>

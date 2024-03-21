@@ -12,7 +12,7 @@ export default function SideNavigation() {
         <div className='navigation__container'>
           <ul>
             <li className="navigation__list">
-              <Link className="navigation__button" to="/">Browse Pals</Link>
+              <Link className="navigation__button" to="/" refresh="true">Browse Pals</Link>
             </li>
             <li className='navigation__list'>
               <Link className='navigation__button' to="/listing/create">Create Listing</Link>

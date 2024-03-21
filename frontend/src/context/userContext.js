@@ -20,7 +20,7 @@ export function UserContextProvider({children}) {
         setUsername(username);
       }
 
-      authenticate(token, setLogin);
+      setLogin(await authenticate(token, username));
       console.log("authenticated", username, login);
       console.log(token);
       return;

@@ -26,6 +26,10 @@ a:visited {
   text-decoration: none;
 }
 
+button {
+  background-color: transparent;
+}
+
 /* Template Layout */
 
 /* Header Bar */
@@ -99,16 +103,25 @@ a:visited {
   display: flex;
 }
 
-.home-page, .inventory-page {
+.page {
   flex-grow: 1;
   background-color: #f5f5f5;
+  padding: 25px;
+}
+
+.back-button {
+  text-decoration: underline;
+}
+
+.back-button:hover {
+  color: blue;
 }
 
 .listings, .inventory {
   display: flex;
   flex-wrap: wrap;
   text-align: center;
-  padding: 25px;
+  gap: 10px 10px;
 }
 
 .listing-box:hover {
@@ -123,7 +136,6 @@ a:visited {
   border-radius: 5px;
   background-color: white;
   box-shadow: 1px 1px lightgray;
-  margin: 5px;
 }
 
 .listing-box-container {
@@ -142,8 +154,25 @@ a:visited {
   justify-content: space-between;
 }
 
+.listing-box-traits {
+  height: 75px;
+}
+
 .listing-box-traits * {
   font-size: 13px;
+}
+
+.listing-buttons {
+  float: right;
+}
+
+.listing-box-delete {
+  width: 18px;
+  padding: 1px;
+}
+.listing-box-delete:hover {
+  background-color: 	#ff4c4c;
+  border-radius: 5px;
 }
 
 /* Listing */
@@ -211,6 +240,37 @@ a:visited {
 .user-page {
   padding: 25px;
 }
+
+/*Pal Create Page */
+.create-pal-form {
+  width: 550px;
+  background-color: white;
+  padding: 25px;
+  border-radius: 5px;
+}
+
+.create-pal-form .form-top {
+  display: flex;
+  gap: 10px;
+}
+
+.name-container {
+  flex: 4;
+}
+
+.level-container {
+  flex-shrink: 2;
+}
+
+.create-pal-form .level {
+  height: 35px;
+  padding: 10px;
+  border-radius: 5px;
+  border: solid lightgray 1px;
+  appearance: none;
+}
+
+
 
 @media only screen and (min-width: 1440px) {
   .listing-box {

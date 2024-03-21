@@ -10,7 +10,8 @@ const getUserPals = async (req, res) => {
   try {
     const user = await User.findOne({username: username});
     if (!user) {
-      return res.status(404).json({error: "User does not exist"});
+      console.error("User does not exist");
+      return res.status(404).json({error: "User does not exist."});
     }
 
     const pals = await UserPal.find({username: username});
@@ -44,7 +45,6 @@ const createUserPal= async (req, res) => {
       return res.status(404).json({error: "Pal not found"});
     }
 
-    console.log("Sucessfully found pal: ", pal);
 
     // get traits
     const TraitArray = []
@@ -55,14 +55,13 @@ const createUserPal= async (req, res) => {
       }
 
       TraitArray.push(trait);
-      console.log("Sucessfully found trait: ", trait);
     }
 
-    console.log("Success: Loaded all required data from db");
 
     // add to database
     const userPal = await UserPal.create({ username, pal: pal, level, "traits": TraitArray });
-    res.status(200).json(userPal);
+    res.status(200).json({userPal, success: true});
+    console.log('Success: Pal created', userPal._id)
   } catch (error) {
     console.error("Error creating userPal", error);
     res.status(400).json({ error: error.message});
@@ -70,11 +69,32 @@ const createUserPal= async (req, res) => {
 }
 
 // DELETE user pal
+const deleteUserPal = async(req, res) => {
+  const { id } = req.params;
+
+  try {
+    const query = { _id: id };
+    const result = await UserPal.deleteOne(query);
+
+    if (result.deletedCount === 1) {
+      console.log("Successfully deleted user pal.");
+      res.status(200).json({success: true})
+    } else {
+      res.status(404).json({success: false, error: "User pal does not exist"});
+    }
+
+  } catch (error) {
+    console.error("Error deleting userPal", error);
+    res.status(400).json({ error: error.message});
+  }
+
+}
 
 
 
 
 module.exports = {
   createUserPal,
-  getUserPals
+  getUserPals,
+  deleteUserPal
 };

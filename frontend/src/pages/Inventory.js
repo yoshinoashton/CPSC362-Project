@@ -11,21 +11,21 @@ export default function InventoryPage() {
   const param_username = params.id;
   const { username } = useContext(UserContext);
   const [inventory, setInventory] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const loadInventory = async () => {
 
       const response = await fetch(`/api/inventory/${param_username}`);
 
-      if (!response.ok) {
-        const message = `Error has occured: ${response.statusText}`;
-        window.alert(message);
-        return;
-      }
       const data = await response.json();
-      if (!data.success) {
+      if (!data) {
         window.alert('Error: Unable to load listing JSON data. :(');
         return;
+      }
+
+      if (!data.success || data.error) {
+        setError(data.error);
       }
 
       const pals = data.pals;
@@ -39,28 +39,26 @@ export default function InventoryPage() {
   // TODO: if the same user then add button to page to add pals to their inventory
   // TODO: when button clicked -> pop up form or change to new page then send request to backend
 
+    if (error) {
+      return (
+        <Layout>
+        <div className='inventory-container page'>
+          <p className='error'>{error}</p>
+        </div>
+      </Layout>
+      );
+    }
 
-  if (username === param_username) {
+
     return (
     <Layout>
-      <div className='inventory-page'>
-      <Link to={`/user/${param_username}`}>{param_username}</Link>
+      <div className='inventory-container page'>
+        <Link to={`/user/${param_username}`} className='back-button'>{`< ${param_username}`}</Link>
+        {param_username === username && ( <Link to='/pal/new'>Add Pal</Link>)}
         <div className='inventory'>
-          {inventory && inventory.map(pal => ( <PalPreview key={pal._id} userPal={pal}/> ))}
+          {inventory && inventory.map(pal => ( <PalPreview key={pal._id} userPal={pal} user={param_username === username}/> ))}
         </div> 
       </div>
     </Layout>
     );
-  } 
-  else {
-    return (
-      <Layout>
-      <div className='inventory-page'>  
-        <div className='inventory'>  
-          {inventory && inventory.map(pal => ( <PalPreview key={pal._id} userPal={pal}/> ))}
-        </div> 
-      </div>
-      </Layout>
-      );
-  }
 }

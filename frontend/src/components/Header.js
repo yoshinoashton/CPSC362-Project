@@ -21,7 +21,7 @@ export default function Header() {
         <div className="header__left">
           <ul className="header__lists">
             <li className="header__list">
-              <Link className="header__button" to="/">Pal Trade Hub</Link>
+              <Link className="header__button" to="/" refresh="true">Pal Trade Hub</Link>
             </li>
           </ul>
         </div>  
@@ -29,10 +29,10 @@ export default function Header() {
         <div className='header__right'>
           <ul className='header__lists'>
               <li className="header__list">
-                { context.login && (
-                  <button className="header__button" onClick={Logout}>Logout</button>
+                { context.username && (
+                  <button className="header__button" onClick={Logout} refresh="true">Logout</button>
                 )}
-                { !context.login && (
+                { !context.username && (
                   <Link className="header__button" to="/login">Login</Link>
                 )}
               </li>

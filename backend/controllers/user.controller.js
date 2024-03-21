@@ -9,7 +9,8 @@ const getUser = async (req, res) => {
   const user = await User.findOne({username: id});
 
   if (!user) {
-    return res.status(404).json({error: 'No such user exists'});
+    console.error("User does not exist");
+    return res.status(404).json({error: 'User does not exist.'});
   }
   res.status(200).json({username: user.username, id: user.id});
 }
