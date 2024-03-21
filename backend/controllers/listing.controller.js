@@ -26,6 +26,13 @@ const getListing = async (req, res) => {
   res.status(200).json(listing);
 }
 
+// GET a user's listings
+const getUserListings = async (req, res) => {
+  const { id } = req.params;
+  const listings = await Listing.find({username: id});
+  res.status(200).json(listings);
+}
+
 // CREATE a new listing -- NEEDS USER AUTH
 const createListing = async (req, res) => {
   const { userPal_id, username, description, cost} = req.body;
@@ -53,5 +60,6 @@ const createListing = async (req, res) => {
 module.exports = {
   getListings,
   getListing,
+  getUserListings,
   createListing
 };

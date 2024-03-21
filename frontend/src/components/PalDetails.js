@@ -1,9 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
 import Trait from './Trait';
 
-export default function ListingInfo({ listing }) {
-  const userPal = listing.userPal[0];
+export default function PalDetails({ userPal }) {
   const pal = userPal.pal[0];
   const traits = userPal.traits;
 
@@ -13,10 +11,8 @@ export default function ListingInfo({ listing }) {
 
       <div className='listing-details'>
         <h4>{pal.name}</h4>
-        <Link to={`/user/${userPal.username}`} className='back-button'>{userPal.username}</Link>
         <p>{pal.type}</p>
-        <p>{listing.cost}</p>
-        <p>{listing.description}</p>
+        <p>{userPal.level}</p>
         {traits && traits.map(trait => (
               <Trait trait={trait}/>
           ))}

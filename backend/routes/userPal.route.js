@@ -1,6 +1,6 @@
 const express = require('express');
 
-const { createUserPal, getUserPals, deleteUserPal } = require('../controllers/userPal.controller');
+const { createUserPal, getUserPals, getUserPal, deleteUserPal } = require('../controllers/userPal.controller');
 
 const router = express.Router();
 
@@ -14,7 +14,7 @@ router.delete('/:id', deleteUserPal)
 router.get('/:username', getUserPals);
 
 // GET one pal
-// router.get('/:id', getUserPal())
+router.get('/pal/:id', getUserPal);
 
 
 module.exports = router;

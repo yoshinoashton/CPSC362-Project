@@ -28,7 +28,7 @@ function App() {
             <Route path='/user/:id' element={<User />}/>
             <Route path='/user/:id/inventory' element={<Inventory />}/>
             <Route path='/pal/new' element={<PalCreate />}/>
-            <Route path='/user/:id/inventory/:palID' element={<Pal />} />
+            <Route path='/user/:id/inventory/:palid' element={<Pal />} />
           </Routes>
         </div>
       </BrowserRouter>

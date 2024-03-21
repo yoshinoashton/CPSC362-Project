@@ -1,7 +1,8 @@
 import { React,  useContext, useEffect, useState } from 'react';
 import { UserContext } from '../context/userContext';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import Layout from "../components/Layout";
+import ListingPreview from '../components/ListingPreview';
 
 export default function UserPage() {
   const params = useParams();
@@ -9,6 +10,7 @@ export default function UserPage() {
   const id = params.id;
   const [userData, setUserData] = useState({});
   const [error, setError] = useState(null);
+  const [listings, setListings] = useState(null);
 
   useEffect (() => {
     const fetchUser = async () => {
@@ -31,7 +33,25 @@ export default function UserPage() {
       setUserData(data);
     }
 
+    const fetchUserListings = async () => {
+      const response = await fetch(`/api/listings/user/${id}`);
+
+      if (!response.ok) {
+        const message = `Error has occured: ${response.statusText}`;
+        window.alert(message);
+        return;
+      }
+      const listings = await response.json();
+      if (!listings) {
+        window.alert('Error: Unable to load listing JSON data. :(');
+        return;
+      }
+
+      setListings(listings);
+    }
+
     fetchUser();
+    fetchUserListings();
   }, [id, error]);
 
   if (error) {
@@ -48,7 +68,13 @@ export default function UserPage() {
     <Layout>
     <div className='user-container page'>
       {userData.username === username && (<p>Hello, {userData.username}!</p>)}
-      <p>{`${userData.username}'s profile`}</p>
+      {userData.username !== username && (<p>{`${userData.username}'s profile`}</p>)}
+      <Link to={`/user/${userData.username}/inventory`} className='back-button'>Inventory</Link>
+      <div className='listings'>
+        {listings && listings.map(listing => (
+          <ListingPreview key={listing._id} listing={listing} />  
+        ))}
+      </div>
     </div>
     </Layout>
   );

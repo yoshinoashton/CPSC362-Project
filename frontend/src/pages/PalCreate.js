@@ -157,7 +157,7 @@ export default function CreatePalPage() {
 
         <label>Traits</label>
         <Select className='form-input' options={traitNames} value={formData.traits} isMulti='true' onChange={handleChange} /><br/>
-        <button type='submit'>Submit</button>
+        <button type='submit' className='submit'>Submit</button>
       </form>
       {success && (
           <Navigate to={`/user/${username}/inventory`} replace={true} />

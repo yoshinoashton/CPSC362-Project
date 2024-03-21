@@ -111,6 +111,7 @@ button {
 
 .back-button {
   text-decoration: underline;
+  margin-left: -.6rem; /*the font size*/
 }
 
 .back-button:hover {
@@ -124,11 +125,11 @@ button {
   gap: 10px 10px;
 }
 
-.listing-box:hover {
+.preview-box:hover {
   background-color: #f6f6f6;
 }
 
-.listing-box {
+.preview-box {
   flex: 1 0 19%;
   max-width: calc(19% - 15px);
   align-items: center;
@@ -138,41 +139,46 @@ button {
   box-shadow: 1px 1px lightgray;
 }
 
-.listing-box-container {
+.preview-box-container {
   padding: 5px;
 }
 
-.listing-box-img {
+.preview-box-img {
   margin-top: 5px;
   width: 100%;
   height: 40%;
   border-radius: 5px;
 }
 
-.listing-box-info {
+.preview-box-info {
   display: flex;
   justify-content: space-between;
 }
 
-.listing-box-traits {
+.preview-box-traits {
   height: 75px;
 }
 
-.listing-box-traits * {
+.preview-box-traits * {
   font-size: 13px;
 }
 
-.listing-buttons {
+.preview-buttons {
   float: right;
 }
 
-.listing-box-delete {
+.preview-box-delete {
   width: 18px;
   padding: 1px;
 }
-.listing-box-delete:hover {
+.preview-box-delete:hover {
   background-color: 	#ff4c4c;
   border-radius: 5px;
+} 
+
+.level {
+  color: #bdbdbd;
+  font-size: 13px;
 }
 
 /* Listing */
@@ -271,6 +277,15 @@ button {
 }
 
 
+.submit {
+  border-radius: 5px;
+  padding: 7px;
+  border: solid lightgray 1px;
+}
+
+.submit:hover {
+  background-color: #e0e0e0;
+}
 
 @media only screen and (min-width: 1440px) {
   .listing-box {

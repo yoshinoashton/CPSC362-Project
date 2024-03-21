@@ -27,6 +27,23 @@ const getUserPals = async (req, res) => {
   }
 }
 
+// GET a single pal
+const getUserPal = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({error: 'No pal exists with that id'});
+  }
+
+  const pal = await UserPal.findById(id);
+
+  if (!pal) {
+    return res.status(404).json({error: 'No pal exists with that id'});
+  }
+
+  res.status(200).json(pal);
+}
+
 
 const createUserPal= async (req, res) => {
   const { username, pal_name, level, traits } = req.body;
@@ -96,5 +113,6 @@ const deleteUserPal = async(req, res) => {
 module.exports = {
   createUserPal,
   getUserPals,
+  getUserPal,
   deleteUserPal
 };

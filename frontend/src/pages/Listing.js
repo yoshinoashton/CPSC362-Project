@@ -32,7 +32,7 @@ export default function ListingPage() {
     }
 
     fetchListing();
-  }, [id]);
+  }, []);
 
   // Checking if listing has been recieved
   if (!listing) {

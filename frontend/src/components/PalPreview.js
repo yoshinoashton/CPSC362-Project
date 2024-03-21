@@ -29,20 +29,23 @@ export default function PalPreview({ userPal, user}) {
   })
   
   return (
-    <Link to={`${location}/${userPal._id}`} className='listing-box'>
-      <div className='listing-box-container'>
-        <img src={pal.imageURL} alt={pal.name} className="listing-box-img" />
-        <div className='listing-box-info'>
+    <Link to={`${location}/${userPal._id}`} className='preview-box'>
+      <div className='preview-box-container'>
+        <img src={pal.imageURL} alt={pal.name} className="preview-box-img" />
+        <div className='preview-box-info'>
           <h4>{pal.name}</h4>
+          <p className='level'>lvl: {userPal.level}</p>
         </div>
-        <div className='listing-box-traits'>
+        <div className='preview-box-traits'>
           {traits && traits.map(trait => (
               <Trait key={trait._id} trait={trait}/>
           ))}
         </div>
         {user && (
-          <div className='listing-buttons'>
-            <button onClick={handleClick}><img src={trash} alt='trash' className="listing-box-delete" /></button>
+          <div className='preview-buttons'>
+            <button onClick={handleClick}>
+              <img src={trash} alt='trash' className="preview-box-delete" />
+            </button>
           </div>
         )}
       </div>
