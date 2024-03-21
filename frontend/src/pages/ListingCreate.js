@@ -33,6 +33,14 @@ export default function ListingCreate() {
           value={selectedOption}
           onChange={handleChange}>
         </Select>
+        <br></br>
+        <label for="price">Enter the price: $</label>
+        <input name="price" type="number"/>
+        <br></br>
+        <label for="desc">Write a description::</label><br></br>
+        <textarea name="desc" rows="4" cols="50"/>
+        <br></br>
+        <input type="submit" value="Create"/>
       </div>
     </Layout>
   );
