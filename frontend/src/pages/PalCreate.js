@@ -100,9 +100,7 @@ export default function CreatePalPage() {
     }
 
     const traits = {};
-    formData.traits.map((trait, index) => {
-      traits[index] = trait.label;
-    })
+    formData.traits.map((trait, index) => traits[index] = trait.label );
 
     const request = {
       "username": username,

@@ -1,4 +1,4 @@
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { React, useState, useEffect } from 'react';
 
 import Layout from "../components/Layout";
@@ -32,7 +32,7 @@ export default function ListingPage() {
     }
 
     fetchListing();
-  }, []);
+  }, [id]);
 
   // Checking if listing has been recieved
   if (!listing) {

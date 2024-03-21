@@ -32,7 +32,6 @@ export default function PalPreview({ userPal, user}) {
     <Link to={`${location}/${userPal._id}`} className='listing-box'>
       <div className='listing-box-container'>
         <img src={pal.imageURL} alt={pal.name} className="listing-box-img" />
-        <img></img>
         <div className='listing-box-info'>
           <h4>{pal.name}</h4>
         </div>
@@ -43,7 +42,7 @@ export default function PalPreview({ userPal, user}) {
         </div>
         {user && (
           <div className='listing-buttons'>
-            <button onClick={handleClick}><img src={trash} alt='trash-image' className="listing-box-delete" /></button>
+            <button onClick={handleClick}><img src={trash} alt='trash' className="listing-box-delete" /></button>
           </div>
         )}
       </div>
