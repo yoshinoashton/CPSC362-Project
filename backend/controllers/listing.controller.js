@@ -44,7 +44,10 @@ const createListing = async (req, res) => {
       return res.status(404).json({error: "User Pal not found"});
     }
 
-    console.log(userPal);
+    const exists = await Listing.find( {'userPal._id': userPal_id});
+    if (exists._id) {
+      return res.status(404).json({error: "pal exists"});
+    }
 
     // add to database
     const listing = await Listing.create({ userPal: userPal, username, description, cost});
