@@ -212,6 +212,33 @@ a:visited {
   padding: 25px;
 }
 
+/* Listing create page */
+.create-listing-page {
+  display: flex;
+  flex-grow: 1;
+  background-color: grey;
+}
+
+.left-side {
+  background-color: green;
+}
+
+.buttons {
+  background-color: red;
+  display: flex;
+  gap: 10px;
+  padding: 5px;
+}
+
+.buttons * {
+  background-color: white;
+  padding: 15px;
+}
+
+.buttons *:hover {
+  background-color: grey;
+}
+
 @media only screen and (min-width: 1440px) {
   .listing-box {
     flex: 1 0 16%;
