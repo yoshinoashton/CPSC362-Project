@@ -167,16 +167,21 @@ button {
   float: right;
 }
 
-.preview-box-delete {
+.preview-box-button {
   width: 18px;
   padding: 1px;
 }
-.preview-box-delete:hover {
-  background-color: 	#ff4c4c;
+.delete:hover {
+  background-color: #ff4c4c;
   border-radius: 5px;
-} 
+}
+.edit:hover {
+  background-color: #6495ED;
+  border-radius: 5px;
+}
 
 .level {
+  padding: 3px;
   color: #bdbdbd;
   font-size: 13px;
 }
