@@ -27,12 +27,14 @@ export default function Header() {
         </div>  
         
         <div className='header__right'>
+          { context.login && (
+            <p>$0.00</p>
+          )}
           <ul className='header__lists'>
               <li className="header__list">
-                { context.username && (
+                { context.login ? (
                   <button className="header__button" onClick={Logout} refresh="true">Logout</button>
-                )}
-                { !context.username && (
+                ) : (
                   <Link className="header__button" to="/login">Login</Link>
                 )}
               </li>

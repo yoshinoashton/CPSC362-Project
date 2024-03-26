@@ -54,15 +54,11 @@ button {
 .header__right {
   display: flex;
   align-items: center;
-  margin-right: 15px;
+  gap: 5px
 }
 
 .header__lists {
   display: flex;
-}
-
-.header__list {
-  margin-right: 15px;
 }
 
 .header__left .header__button {
@@ -70,8 +66,14 @@ button {
 }
 
 .header__right .header__button {
+  padding: 5px;
+  margin-right: 15px;
   font-size: 15px;
   background-color: transparent;
+}
+
+.header__right .header__button:hover {
+  font-weight:500;
 }
 
 
