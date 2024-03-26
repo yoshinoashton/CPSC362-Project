@@ -20,9 +20,8 @@ export function UserContextProvider({children}) {
         setUsername(username);
       }
 
-      setLogin(await authenticate(token, username));
-      console.log("authenticated", username, login);
-      console.log(token);
+      const auth = await(authenticate(token, username));
+      setLogin(auth);
       return;
     }
 

@@ -19,7 +19,7 @@ export default function PalPreview({ userPal, user}) {
 
     const response = await fetch(`/api/inventory/${userPal._id}`, {
       method: 'delete'
-    }); 
+    });
 
     if (!response.ok) {
       // add error message

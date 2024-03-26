@@ -1,6 +1,6 @@
 const authenticate = async (token, username) => {
   if (!token) {
-    return;
+    return false;
   }
 
   const response = await fetch('/api/account/auth', {
@@ -12,16 +12,17 @@ const authenticate = async (token, username) => {
   if (!response.ok) {
     const message = `Error has occured: ${response.statusText}`;
     window.alert(message);
-    return;
+    return false;
   }
 
   const data = await response.json();
   if (!data) {
     window.alert('Error: Unable to load user JSON data');
-    return;
+    return false;
   }
 
   if (data.success && data.username === username) {
+    console.log('authenticated')
     return true;
   }
 

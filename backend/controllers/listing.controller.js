@@ -33,9 +33,9 @@ const getUserListings = async (req, res) => {
   res.status(200).json(listings);
 }
 
-// CREATE a new listing -- NEEDS USER AUTH
+// CREATE a new listing
 const createListing = async (req, res) => {
-  const { userPal_id, username, description, cost} = req.body;
+  const { userPal_id, description, cost} = req.body;
   try {
     // find pal
     const userPal = await UserPal.findById(userPal_id);
@@ -50,7 +50,7 @@ const createListing = async (req, res) => {
     }
 
     // add to database
-    const listing = await Listing.create({ userPal: userPal, username, description, cost});
+    const listing = await Listing.create({ userPal: userPal, username: userPal.username, description, cost});
     res.status(200).json(listing);
   } catch (error) {
     console.error("Error creating listing", error);
@@ -58,11 +58,31 @@ const createListing = async (req, res) => {
   }
 }
 
-// DELETE listing -- NEEDS USER AUTH
+// DELETE listing
+const deleteListing = async(req, res) => {
+  const { id } = req.params;
 
+  try {
+    const query = { _id: id };
+    const result = await Listing.deleteOne(query);
+
+    if (result.deletedCount === 1) {
+      console.log("Successfully deleted listing.");
+      res.status(200).json({success: true})
+    } else {
+      res.status(404).json({success: false, error: "Listing does not exist"});
+    }
+
+  } catch (error) {
+    console.error("Error deleting listing", error);
+    res.status(400).json({ error: error.message});
+  }
+
+}
 module.exports = {
   getListings,
   getListing,
   getUserListings,
-  createListing
+  createListing,
+  deleteListing
 };

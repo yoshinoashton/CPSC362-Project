@@ -3,7 +3,8 @@ const {
   getListings,
   getListing,
   createListing,
-  getUserListings
+  getUserListings,
+  deleteListing
 } = require('../controllers/listing.controller');
 // const Listing = require('../models/listingModel');
 
@@ -18,7 +19,7 @@ router.get('/user/:id', getUserListings);
 // POST a new listing
 router.post('/', createListing);
 // DELETE a listing
-// router.post('/:id', deleteListing);
+router.delete('/:id', deleteListing);
 // UPDATE a listing
 // router.post('/:id', updateListing);
 
