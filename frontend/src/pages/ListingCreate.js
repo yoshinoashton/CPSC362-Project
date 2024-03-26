@@ -1,8 +1,10 @@
 import Layout from "../components/Layout";
 import Select from 'react-select';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { UserContext } from '../context/userContext';
 
 export default function ListingCreate() {
+  const { username } = useContext(UserContext);
   const [selectedOption, setSelectedOption] = useState(null);
   const [options, setOptions] = useState([]);
   const [price, setPrice] = useState('');
@@ -10,18 +12,19 @@ export default function ListingCreate() {
   const [isShiny, setIsShiny] = useState(false);
 
   useEffect(() => {
-    fetch(`/api/pals`)
+    fetch(`/api/inventory/test`)
       .then(response => response.json())
-      .then(data => {
-        const formattedOptions = data.map(item => ({
+      .then(data => {console.log(data);
+        const formattedOptions = data.pals.map(item => ({
           value: item._id,
-          label: item.name,
-          imageURL: item.imageURL // Assuming you want to use the imageURL for the preview
+          label: item.pal[0].name,
+          imageURL: item.pal[0].imageURL // Assuming you want to use the imageURL for the preview
         }));
         setOptions(formattedOptions);
+        console.log(formattedOptions);
       })
       .catch(error => console.error('Error fetching data:', error));
-  }, []);
+  }, [username]);
 
   const handleChange = (selectedOption) => {
     setSelectedOption(selectedOption);
@@ -54,11 +57,9 @@ export default function ListingCreate() {
     })
     .then(data => {
       console.log('Success:', data);
-      // Handle success. For example, you can clear the form or redirect the user.
     })
     .catch((error) => {
       console.error('Error:', error);
-      // Handle errors. For example, you can show an error message to the user.
     });
   };  
 
