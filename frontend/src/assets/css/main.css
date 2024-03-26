@@ -54,15 +54,7 @@ button {
 .header__right {
   display: flex;
   align-items: center;
-  margin-right: 15px;
-}
-
-.header__lists {
-  display: flex;
-}
-
-.header__list {
-  margin-right: 15px;
+  gap: 10px;
 }
 
 .header__left .header__button {
