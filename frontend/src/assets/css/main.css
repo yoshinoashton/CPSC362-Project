@@ -291,37 +291,55 @@ button {
 }
 
 @media only screen and (min-width: 1440px) {
-  .listing-box {
+  .preview-box {
     flex: 1 0 16%;
-    max-width: calc(16% - 15px);
+    max-width: calc(16%);
+  }
+}
+
+@media only screen and (max-width: 1440px) {
+  .preview-box {
+    flex: 1 0 20%;
+    max-width: calc(20% - 10px);
   }
 }
 
 @media only screen and (max-width: 1280px) {
-  .listing-box {
-    flex: 1 0 24%;
-    max-width: calc(23% - 15px);
+  .preview-box {
+    flex: 1 0 25%;
+    max-width: calc(25% - 10px);
   }
 }
 
-
-/* Large devices such as laptops (1024px and up) */
-@media only screen and (max-width: 1024px) {
-  .listing-box {
+@media only screen and (max-width: 1080px) {
+  .preview-box {
     flex: 1 0 33%;
-    max-width: calc(31% - 15px);
+    max-width: calc(33% - 10px);
   }
 }
 
-/* Medium devices such as tablets (768px and up) */
-@media only screen and (max-width: 768px) {
+
+@media only screen and (max-width: 1080px) {
+  .preview-box {
+    flex: 1 0 33%;
+    max-width: calc(33% - 10px);
+  }
+}
+
+
+@media only screen and (max-width: 720px) {
+  .preview-box {
+    flex: 1 0 50%;
+    max-width: calc(50% - 10px);
+  }
+}
+
+@media only screen and (max-width: 640px) {
   .listings {
     flex-direction: column;
-    padding: 0px;
-    margin-right: 30px;
   }
 
-  .listing-box {
+  .preview-box {
     flex: 1;
     max-width: 100%;
   }
