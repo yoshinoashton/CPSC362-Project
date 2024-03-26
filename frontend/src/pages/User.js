@@ -67,8 +67,8 @@ export default function UserPage() {
   return (
     <Layout>
     <div className='user-container page'>
-      {userData.username === username && (<p>Hello, {userData.username}!</p>)}
-      {userData.username !== username && (<p>{`${userData.username}'s profile`}</p>)}
+      {userData.username === username && (<p>Hello, {id}!</p>)}
+      {userData.username !== username && (<p>{`${id}'s profile`}</p>)}
       <Link to={`/user/${userData.username}/inventory`} className='back-button'>Inventory</Link>
       <div className='listings'>
         {listings && listings.map(listing => (
