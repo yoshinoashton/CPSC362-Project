@@ -2,6 +2,7 @@ import { React } from 'react';
 import { Link } from 'react-router-dom';
 import Trait from './Trait';
 import trash from '../assets/images/delete.png'
+import edit from '../assets/images/edit.png'
 
 
 
@@ -18,7 +19,7 @@ export default function PalPreview({ userPal, user}) {
 
     const response = await fetch(`/api/inventory/${userPal._id}`, {
       method: 'delete'
-    }); 
+    });
 
     if (!response.ok) {
       // add error message
@@ -43,8 +44,12 @@ export default function PalPreview({ userPal, user}) {
         </div>
         {user && (
           <div className='preview-buttons'>
+            <button onClick={console.log('edit')}>
+              <img src={edit} alt='edit' className="preview-box-button edit" />
+            </button>
+
             <button onClick={handleClick}>
-              <img src={trash} alt='trash' className="preview-box-delete" />
+              <img src={trash} alt='trash' className="preview-box-button delete" />
             </button>
           </div>
         )}

@@ -2,7 +2,9 @@ const UserPal = require('../models/userPal.model')
 const Pal = require('../models/pal.model')
 const Trait = require('../models/trait.model')
 const User = require('../models/user.model')
+const Listing = require('../models/listing.model')
 const mongoose = require('mongoose');
+const { deleteListing } = require('./listing.controller')
 
 // GET user pal
 const getUserPals = async (req, res) => {
@@ -95,6 +97,13 @@ const deleteUserPal = async(req, res) => {
 
     if (result.deletedCount === 1) {
       console.log("Successfully deleted user pal.");
+
+      // Delete dependencies (listings)
+      const listing = await Listing.findOneAndDelete({'userPal._id': id})
+      if (listing) {
+        console.log('Successfully deleted associated listings');
+      }
+
       res.status(200).json({success: true})
     } else {
       res.status(404).json({success: false, error: "User pal does not exist"});
