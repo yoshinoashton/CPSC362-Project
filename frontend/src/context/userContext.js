@@ -7,6 +7,7 @@ export function UserContextProvider({children}) {
   const [username, setUsername] = useState('')
   const [token, setToken] = useState('');
   const [login, setLogin] = useState(false);
+  const [balance, setBalance] = useState(0.00);
 
   useEffect(() => {
     const loadData = async () => {
@@ -20,16 +21,21 @@ export function UserContextProvider({children}) {
         setUsername(username);
       }
 
+      if (!balance) {
+        const balance = Number(localStorage.getItem('balance'));
+        setBalance(balance)
+      }
+
       const auth = await(authenticate(token, username));
       setLogin(auth);
       return;
     }
 
     loadData();
-  }, [token, username]);
+  }, [token, username, balance]);
   
   return (
-    <UserContext.Provider value={{username, token, login, setUsername, setToken, setLogin}}>
+    <UserContext.Provider value={{username, token, login, balance, setUsername, setToken, setLogin, setBalance}}>
       {children}
     </UserContext.Provider>
   )

@@ -40,10 +40,13 @@ export default function LoginPage() {
     } else {
       const data = await response.json();
       if (data.success) {
+        console.log(data);
         localStorage.setItem("token", data.token);
         localStorage.setItem("username", data.user.username);
+        localStorage.setItem("balance", data.user.balance);
         context.setToken(data.token);
         context.setUsername(data.user.username);
+        context.setBalance(data.user.balance);
         setResponse(data);
       } else {
         setResponse(data);

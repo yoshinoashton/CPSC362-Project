@@ -33,7 +33,7 @@ export default function PalPage() {
     }
 
     fetchpal();
-  }, [id]);
+  }, [palid]);
 
   // Checking if pal has been recieved
   if (!pal) {

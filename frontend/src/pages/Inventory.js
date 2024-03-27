@@ -33,7 +33,7 @@ export default function InventoryPage() {
     }
 
     loadInventory(param_username);
-  }, []);
+  }, [param_username]);
   // TODO: create function for the button click of adding pal
 
   // TODO: if the same user then add button to page to add pals to their inventory

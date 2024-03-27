@@ -1,6 +1,7 @@
 import { React, useContext }from 'react';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../context/userContext';
+import { Popup } from 'reactjs-popup'
 
 export default function Header() {
 
@@ -9,9 +10,11 @@ export default function Header() {
   function Logout() {
     context.setUsername('');
     context.setToken('');
+    context.setBalance(0);
     context.setLogin(false);
     localStorage.removeItem('token');
     localStorage.removeItem('username');
+    localStorage.removeItem('balance');
   }
 
   console.log('loaded header')
@@ -25,11 +28,13 @@ export default function Header() {
               <Link className="header__button" to="/" refresh="true">Pal Trade Hub</Link>
             </li>
           </ul>
-        </div>  
+        </div>
         
         <div className='header__right'>
           { context.login && (
-            <p>$0.00</p>
+            <Popup trigger={<button>{`$${context.balance.toFixed(2)}`}</button>} position="bottom center" >
+              <button>Add Funds</button>
+            </Popup>
           )}
           <ul className='header__lists'>
               <li className="header__list">

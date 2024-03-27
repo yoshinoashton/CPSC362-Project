@@ -28,10 +28,7 @@ export default function CreatePalPage() {
         return;
       }
 
-      const pals = await data.map(pal => ({
-        label: pal.name,
-        value: pal._id
-      }));
+      const pals = await data.map((pal) => ({ label: pal.name, value: pal._id }));
 
       setPalNames(pals);
     })
@@ -99,8 +96,7 @@ export default function CreatePalPage() {
       return;
     }
 
-    const traits = {};
-    formData.traits.map((trait, index) => {traits[index] = trait.label; return;} );
+    const traits = formData.traits.map((trait) => (trait.label));
 
     const request = {
       "username": username,

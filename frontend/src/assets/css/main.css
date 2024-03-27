@@ -1,6 +1,11 @@
 /* General CSS */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+:root {
+  --color-background: #f5f5f5;
+  --color-hover: #f6f6f6;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -10,6 +15,7 @@
   outline: none;
   font-family: "Poppins";
   font-size: 15px;
+  border-radius: 5px;
 }
 
 ul { 
@@ -64,7 +70,6 @@ button {
 .header__right .header__button {
   padding: 5px;
   margin-right: 15px;
-  font-size: 15px;
   background-color: transparent;
 }
 
@@ -87,13 +92,13 @@ button {
 }
 
 .navigation__list:hover {
-  background-color: #f5f5f5;
-  border-radius: 5px;
+  background-color: var(--color-background);
 }
 
 /* Footer */
 .footer {
   background-color: grey;
+  border-radius: 0px;
 }
 
 /* Home Page */
@@ -103,8 +108,9 @@ button {
 
 .page {
   flex-grow: 1;
-  background-color: #f5f5f5;
+  background-color: var(--color-background);
   padding: 25px;
+  border-radius: 0px;
 }
 
 .back-button {
@@ -124,7 +130,7 @@ button {
 }
 
 .preview-box:hover {
-  background-color: #f6f6f6;
+  background-color: var(--color-hover);
 }
 
 .preview-box {
@@ -132,7 +138,6 @@ button {
   max-width: calc(19% - 15px);
   align-items: center;
   text-align: left;
-  border-radius: 5px;
   background-color: white;
   box-shadow: 1px 1px lightgray;
 }
@@ -145,7 +150,6 @@ button {
   margin-top: 5px;
   width: 100%;
   height: 40%;
-  border-radius: 5px;
 }
 
 .preview-box-info {
@@ -169,13 +173,12 @@ button {
   width: 18px;
   padding: 1px;
 }
+
 .delete:hover {
   background-color: #ff4c4c;
-  border-radius: 5px;
 }
 .edit:hover {
   background-color: #6495ED;
-  border-radius: 5px;
 }
 
 .level {
@@ -227,7 +230,6 @@ button {
 
 .login-container * {
   border: 1px solid black;
-  border-radius: 5px;
   padding: 15px;
   width: 275px;
 }
@@ -255,7 +257,6 @@ button {
   width: 550px;
   background-color: white;
   padding: 25px;
-  border-radius: 5px;
 }
 
 .create-pal-form .form-top {
@@ -277,20 +278,18 @@ button {
   max-width: 100px;
   height: 35px;
   padding: 10px;
-  border-radius: 5px;
   border: solid lightgray 1px;
   appearance: none;
 }
 
 
 .submit {
-  border-radius: 5px;
   padding: 7px;
   border: solid lightgray 1px;
 }
 
 .submit:hover {
-  background-color: #e0e0e0;
+  background-color: var(--color-hover);
 }
 
 @media only screen and (min-width: 1440px) {
