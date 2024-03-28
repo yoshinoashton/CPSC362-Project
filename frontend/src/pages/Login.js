@@ -47,6 +47,7 @@ export default function LoginPage() {
         context.setToken(data.token);
         context.setUsername(data.user.username);
         context.setBalance(data.user.balance);
+        context.setLogin(true);
         setResponse(data);
       } else {
         setResponse(data);

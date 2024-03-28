@@ -9,21 +9,9 @@ export default function SideNavigation() {
   if (login && username) {
     return (
       <nav>
-        <div className='navigation__container'>
-          <ul>
-            <li className="navigation__list">
-              <Link className="navigation__button" to="/" refresh="true">Browse Pals</Link>
-            </li>
-            <li className='navigation__list'>
-              <Link className='navigation__button' to="/listing/create">Create Listing</Link>
-            </li>
-            <li className="navigation__list">
-              <Link className="navigation__button" to={"/user/" + username +"/inventory"}>Inventory</Link>
-            </li>
-            <li className='navigation__list'>
-              <Link className='navigation__button' to={"/user/" + username}>Your Account</Link>
-            </li>
-          </ul>
+        <div className='navigation-container'>
+          <Link className="navigation-button" to="/" refresh="true">Browse Pals</Link>
+          <Link className='navigation-button' to="/listing/create">Create Listing</Link>
         </div>
       </nav>
     );
@@ -31,15 +19,9 @@ export default function SideNavigation() {
   } else {
     return (
       <nav>
-      <div className='navigation__container'>
-        <ul>
-          <li className="navigation__list">
-            <Link className="navigation__button" to="/">Browse Pals</Link>
-          </li>
-          <li className='navigation__list'>
-            <Link className='navigation__button' to={"/login"}>Your Account</Link>
-          </li>
-        </ul>
+      <div className='navigation-container'>
+          <Link className="navigation-button" to="/">Browse Pals</Link>
+          <Link className='navigation-button' to={"/login"}>Your Account</Link>
       </div>
       </nav>
     )

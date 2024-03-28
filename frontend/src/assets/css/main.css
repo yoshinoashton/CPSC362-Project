@@ -3,7 +3,7 @@
 
 :root {
   --color-background: #f5f5f5;
-  --color-hover: #f6f6f6;
+  --color-hover: #d3d3d3;
 }
 
 * {
@@ -15,7 +15,6 @@
   outline: none;
   font-family: "Poppins";
   font-size: 15px;
-  border-radius: 5px;
 }
 
 ul { 
@@ -24,8 +23,6 @@ ul {
 
 a {
   color: black;
-  padding: 10px;
-  width: 100%;
 }
 
 a:visited {
@@ -40,7 +37,7 @@ button {
 
 /* Header Bar */
 
-.header__container {
+.header-container {
   margin: auto;
   width: 100%;
   display: flex;
@@ -48,57 +45,78 @@ button {
   align-items: center;
   height: 50px;
   border-bottom: lightgray solid 1px;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
-.header__left {
+.header-left {
   flex: 1;
   display: flex;
   align-items: center;
-  margin-left: 20px;
+  margin-left: 15px;
 }
 
-.header__right {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.header__left .header__button {
+.header-left .header-button {
+  padding: 0px;
   font-size: 22px;
 }
 
-.header__right .header__button {
-  padding: 5px;
-  margin-right: 15px;
-  background-color: transparent;
+.header-right {
+  margin-right: 30px;
 }
 
-.header__right .header__button:hover {
-  font-weight:500;
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  width: 175px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px 2px lightgray;
 }
 
+.menu-button {
+  width: 100%;
+  padding: 15px;
+  text-align: left;
+  border-bottom: solid 1px lightgray;
+}
+
+.menu-button:hover {
+  background-color: var(--color-hover);
+}
+
+.menu-container .top {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.menu-container .bot {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom: none;
+}
 
 /* Side Navigation */
-.navigation__container {
+.navigation-container {
+  display: flex;
+  flex-direction: column;
   height: 500px;
-  width: 150px;
-  padding-top: 10px;
+  width: 175px;
   align-items: center;
 }
 
-.navigation__list {
-  padding: 10px;
-  width: 97%;
+.navigation-button {
+  width: 100%;
+  padding: 15px;
 }
 
-.navigation__list:hover {
-  background-color: var(--color-background);
+.navigation-button:hover {
+  background-color: var(--color-hover);
 }
 
 /* Footer */
 .footer {
   background-color: grey;
-  border-radius: 0px;
 }
 
 /* Home Page */
@@ -110,16 +128,6 @@ button {
   flex-grow: 1;
   background-color: var(--color-background);
   padding: 25px;
-  border-radius: 0px;
-}
-
-.back-button {
-  text-decoration: underline;
-  margin-left: -.6rem; /*the font size*/
-}
-
-.back-button:hover {
-  color: blue;
 }
 
 .listings, .inventory {
@@ -139,7 +147,9 @@ button {
   align-items: center;
   text-align: left;
   background-color: white;
-  box-shadow: 1px 1px lightgray;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 0 5px 2px lightgray;
 }
 
 .preview-box-container {
@@ -172,6 +182,7 @@ button {
 .preview-box-button {
   width: 18px;
   padding: 1px;
+  border-radius: 5px;
 }
 
 .delete:hover {
@@ -232,6 +243,7 @@ button {
   border: 1px solid black;
   padding: 15px;
   width: 275px;
+  border-radius: 5px;
 }
 
 .login-page a {
@@ -250,6 +262,20 @@ button {
 /* User info page */
 .user-page {
   padding: 25px;
+}
+
+/* Inventory Page */
+.page-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.page-button {
+  text-decoration: underline;
+}
+
+.page-button:hover {
+  color: blue;
 }
 
 /*Pal Create Page */

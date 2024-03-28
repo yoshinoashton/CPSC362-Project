@@ -10,7 +10,9 @@ import SignUp from './pages/SignUp';
 import User from './pages/User'
 import Inventory from './pages/Inventory.js';
 import Pal from './pages/Pal.js';
-import PalCreate from './pages/PalCreate.js'
+import PalCreate from './pages/PalCreate.js';
+import Wallet from './pages/Wallet.js';
+import Settings from './pages/Settings.js'
 import { UserContextProvider } from './context/userContext.js';
 
 function App() {
@@ -25,6 +27,8 @@ function App() {
             <Route path='/listing/create' element={<ListingCreate />}/>
             <Route path='/login' element={<LoginPage/>}/>
             <Route path='/signup' element={<SignUp />}/>
+            <Route path='/user/wallet' element={<Wallet />}/>
+            <Route path='/user/settings' element={<Settings />}/>
             <Route path='/user/:id' element={<User />}/>
             <Route path='/user/:id/inventory' element={<Inventory />}/>
             <Route path='/pal/new' element={<PalCreate />}/>

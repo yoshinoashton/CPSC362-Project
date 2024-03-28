@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import { React, useState, useEffect } from 'react';
 
 import Layout from "../components/Layout";
-import ListingInfo from "../components/ListingInfo";
+import ListingDetails from "../components/ListingDetails";
 
 
 export default function ListingPage() {
@@ -42,7 +42,7 @@ export default function ListingPage() {
   return (
     <Layout>
       <div className='listing-container page'>
-        <ListingInfo listing={listing}/>
+        <ListingDetails listing={listing}/>
       </div>
     </Layout>
   );
