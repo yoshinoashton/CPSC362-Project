@@ -1,5 +1,6 @@
 const Listing = require('../models/listing.model');
 const UserPal = require('../models/userPal.model');
+const User = require('../models/user.model');
 const mongoose = require('mongoose');
 
 
@@ -79,10 +80,65 @@ const deleteListing = async(req, res) => {
   }
 
 }
+
+// BUY PAL
+const buyListing = async(req, res) => {
+  const { id } = req.params;
+  const { username } = req.body;
+
+  try {
+    // find pal
+    const listing = await Listing.findById(id);
+
+    if (!listing) {
+      res.status(404).json({success: false, error: "Listing does not exist"});
+    }
+
+    // find user
+    const user = await User.findOne({username: username});
+    if (!user) {
+      res.status(404).json({success: false, error: "User does not exist"});
+    }
+
+    console.log(user.balance, listing.cost);
+
+    // make sure the user has enough
+    if (user.balance - listing.cost >= 0) {
+
+      // transfer pal
+      const newUser = { $set: {username: username}};
+      const options = { upsert: true };
+      const result = await UserPal.updateOne({ _id: listing.userPal[0].id}, newUser, options);
+
+
+      if (!result) {
+        console.log('Userpal was not deleted successfuly');
+        res.status(404).json({success: false, error: "Error updating Userpal"});
+      }
+      console.log("Successfully transfered pal from listing.");
+      const newBalance = user.balance - listing.cost; 
+      const balanceResult = await User.updateOne({username: username}, { $set: {balance: newBalance}}, options)
+
+      if (!balanceResult) {
+        console.log('Userpal was not deleted successfuly');
+        res.status(404).json({success: false, error: "Error updating user's balance"});
+      }
+
+      res.status(200).json({success: true, message: user.balance});
+      
+    } else {
+      res.status(404).json({success: false, error: "Not enough funds"});
+    }
+  } catch (error) {
+    res.status(404).json({success: false, error: error.message});
+  }
+}
+
 module.exports = {
   getListings,
   getListing,
   getUserListings,
   createListing,
-  deleteListing
+  deleteListing,
+  buyListing
 };

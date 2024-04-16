@@ -4,7 +4,8 @@ const {
   getListing,
   createListing,
   getUserListings,
-  deleteListing
+  deleteListing,
+  buyListing
 } = require('../controllers/listing.controller');
 // const Listing = require('../models/listingModel');
 
@@ -22,6 +23,7 @@ router.post('/', createListing);
 router.delete('/:id', deleteListing);
 // UPDATE a listing
 // router.post('/:id', updateListing);
+router.put('/buy/:id', buyListing);
 
 
 module.exports = router;

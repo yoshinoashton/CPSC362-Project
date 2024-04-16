@@ -56,8 +56,8 @@ const loginUser = async (req, res) => {
       }
       if (response) {
         const payload = {
-          username: foundUser.username,
-          balance: foundUser.balance
+          id: foundUser._id,
+          username: foundUser.username
         }
   
         // Creating Access token
