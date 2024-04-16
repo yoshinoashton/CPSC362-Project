@@ -82,14 +82,14 @@ export default function ListingCreate() {
               onChange={handleChange}>
             </Select>
             <br />
-            <label htmlFor="price">Enter the price: $</label>
-            <input name="price" type="number" value={price} onChange={e => setPrice(e.target.value)} />
+            <label className="create-listing-lab" htmlFor="price">Enter the price: $</label>
+            <input className="create-listing-input" name="price" type="number" value={price} onChange={e => setPrice(e.target.value)} />
             <br />
-            <label htmlFor="desc">Write a description:</label><br />
-            <textarea name="desc" rows="4" cols="50" value={description} onChange={e => setDescription(e.target.value)} />
+            <label className="create-listing-lab" htmlFor="desc">Write a description:</label><br />
+            <textarea className="create-listing-input" name="desc" rows="4" cols="50" value={description} onChange={e => setDescription(e.target.value)} />
             <br />
-            <label htmlFor="isShiny">Shiny: </label>
-            <input name="isShiny" type="checkbox" checked={isShiny} onChange={e => setIsShiny(e.target.checked)} />
+            <label className="create-listing-lab" htmlFor="isShiny">Shiny: </label>
+            <input className="create-listing-input-isshiny" name="isShiny" type="checkbox" checked={isShiny} onChange={e => setIsShiny(e.target.checked)} />
             <br />
             <div className="buttons">
               <input type="submit" value="Create" />

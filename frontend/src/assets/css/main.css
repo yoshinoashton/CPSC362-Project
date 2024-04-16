@@ -216,27 +216,37 @@ a:visited {
 .create-listing-page {
   display: flex;
   flex-grow: 1;
-  background-color: grey;
+  padding-top: 20px;
 }
 
 .left-side {
-  background-color: green;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .buttons {
-  background-color: red;
+
   display: flex;
   gap: 10px;
   padding: 5px;
 }
 
 .buttons * {
-  background-color: white;
   padding: 15px;
+  border-color: black;
+  border-radius: 4px;
 }
 
 .buttons *:hover {
   background-color: grey;
+}
+
+.create-listing-input {
+  border-radius: 5px;
+  margin-left: 10px;
+  outline-width: thin;
+  outline-style: solid;
+  outline-color: lightgray;
 }
 
 @media only screen and (min-width: 1440px) {
