@@ -12,7 +12,7 @@ const getUser = async (req, res) => {
     console.error("User does not exist");
     return res.status(404).json({error: 'User does not exist.'});
   }
-  res.status(200).json({username: user.username, id: user.id});
+  res.status(200).json({username: user.username, id: user.id, balance: user.balance});
 }
 
 // PUT (update) user funds

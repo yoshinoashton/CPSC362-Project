@@ -3,7 +3,7 @@ const authenticate = async (token, username) => {
     return false;
   }
 
-  const response = await fetch('/api/account/auth', {
+  const response = await fetch('/api/user/auth', {
     headers: {
       'authorization': token
     }

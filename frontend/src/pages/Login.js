@@ -27,7 +27,7 @@ export default function LoginPage() {
       "password": password
     }
 
-    const response = await fetch('/api/account/login', {
+    const response = await fetch('/api/user/login', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json'
@@ -44,6 +44,7 @@ export default function LoginPage() {
         localStorage.setItem("token", data.token);
         localStorage.setItem("username", data.user.username);
         localStorage.setItem("balance", data.user.balance);
+
         context.setToken(data.token);
         context.setUsername(data.user.username);
         context.setBalance(data.user.balance);
@@ -61,7 +62,7 @@ export default function LoginPage() {
       <form className='login-form' onSubmit={handleLogin}>
         <h1>PalTrade Hub</h1>
         <div className='login-container'>
-          <input type='text' id='username' name='username' placeholder='Email or Username'
+          <input type='text' id='username' name='username' placeholder='Username'
                  onChange={(e) => { setUsername(e.target.value)}}/>
           <br/><br/>
           <input type='text' id='password' name='password' placeholder='Password'

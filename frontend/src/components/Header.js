@@ -20,7 +20,7 @@ export default function Header() {
     localStorage.removeItem('balance');
   }
 
-  console.log('loaded header')
+  console.log(context.balance)
   return (
     <nav>
       <div className="header-container">
