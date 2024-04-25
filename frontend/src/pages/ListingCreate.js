@@ -12,7 +12,7 @@ export default function ListingCreate() {
   const [isShiny, setIsShiny] = useState(false);
 
   useEffect(() => {
-    fetch(`/api/inventory/test`)
+    fetch(`/api/inventory/${username}`)
       .then(response => response.json())
       .then(data => {console.log(data);
         const formattedOptions = data.pals.map(item => ({
