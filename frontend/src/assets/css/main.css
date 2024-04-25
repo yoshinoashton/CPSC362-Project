@@ -212,6 +212,39 @@ button {
   margin-left: 20px;
 }
 
+.listing-details h4 {
+  font-size: 3rem;
+  font-weight: normal;
+}
+
+.listing-title {
+  display: flex;
+}
+
+.image-type {
+  background-color: transparent;
+}
+
+.link-user {
+  color: blue;
+}
+
+.link-user:hover {
+  text-decoration: underline;
+}
+
+.buy-button {
+  margin-top: 20px;
+  width: 100px;
+  padding: 10px;
+  background-color: white;
+  box-shadow: 0 0 5px 2px lightgray;
+  border-radius: 5px;
+}
+
+.buy-button:hover {
+  background-color: var(--color-hover);
+}
 /* Login */
 .login-page * {
   text-align: center;
