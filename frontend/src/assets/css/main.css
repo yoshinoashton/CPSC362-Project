@@ -208,6 +208,11 @@ button {
   background-color: lightgrey;
 }
 
+.listing-details h4 {
+  font-size: 3rem;
+  font-weight: normal;
+}
+
 /* Login */
 .login-page * {
   text-align: center;
