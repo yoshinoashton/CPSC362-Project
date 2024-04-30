@@ -11,8 +11,11 @@ export default function PalDetails({ userPal }) {
 
       <div className='listing-details'>
         <h4>{pal.name}</h4>
-        <p>{pal.type}</p>
-        <p>{userPal.level}</p>
+        <br></br>
+        <h4>About this pal</h4>
+        <p><strong>type:</strong> {pal.type}</p>
+        <p><strong>lvl:</strong> {userPal.level}</p>
+        <h4>traits:</h4>
         {traits && traits.map(trait => (
               <Trait trait={trait}/>
           ))}
