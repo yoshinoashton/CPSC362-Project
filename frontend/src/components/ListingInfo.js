@@ -13,10 +13,13 @@ export default function ListingInfo({ listing }) {
 
       <div className='listing-details'>
         <h4>{pal.name}</h4>
-        <Link to={`/user/${userPal.username}`} className='back-button'>{userPal.username}</Link>
-        <p>{pal.type}</p>
-        <p>{listing.cost}</p>
+        <p><strong>${listing.cost}</strong></p>
+        <br></br>
+        <p><strong>About this pal</strong></p>
+        <strong>Owner: </strong><Link to={`/user/${userPal.username}`} className='back-button'>{userPal.username}</Link>
+        <p><strong>type: </strong>{pal.type}</p>
         <p>{listing.description}</p>
+        <p><strong>traits:</strong></p>
         {traits && traits.map(trait => (
               <Trait trait={trait}/>
           ))}

@@ -6,10 +6,10 @@ export default function PalDetails({ userPal }) {
   const traits = userPal.traits;
 
   return (
-    <div className='listing-container'>
+    <div className='pal-container'>
       <img src={pal.imageURL} alt={pal.name} />
 
-      <div className='listing-details'>
+      <div className='pal-details'>
         <h4>{pal.name}</h4>
         <br></br>
         <p><strong>About this pal</strong></p>

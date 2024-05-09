@@ -4,6 +4,7 @@ import { useParams, Link } from 'react-router-dom';
 
 import Layout from "../components/Layout";
 import PalPreview from "../components/PalPreview";
+import { SearchBar } from '../components/SearchBar';
 
 export default function InventoryPage() {
   // TODO: formatting (css)
@@ -12,6 +13,7 @@ export default function InventoryPage() {
   const { username } = useContext(UserContext);
   const [inventory, setInventory] = useState(null);
   const [error, setError] = useState(null);
+  const [results, setResults] = useState([]);
 
   useEffect(() => {
     const loadInventory = async () => {
@@ -33,7 +35,7 @@ export default function InventoryPage() {
     }
 
     loadInventory(param_username);
-  }, []);
+  }, [param_username]);
   // TODO: create function for the button click of adding pal
 
   // TODO: if the same user then add button to page to add pals to their inventory
@@ -55,6 +57,10 @@ export default function InventoryPage() {
       <div className='inventory-container page'>
         <Link to={`/user/${param_username}`} className='back-button'>{`< ${param_username}`}</Link>
         {param_username === username && ( <Link to='/pal/new' className='back-button'>Add Pal</Link>)}
+        <div className='search-bar-container'>
+          <SearchBar setResults={setResults} />
+          <div>SearchResults</div>
+        </div>
         <div className='inventory'>
           {inventory && inventory.map(pal => ( <PalPreview key={pal._id} userPal={pal} user={param_username === username}/> ))}
         </div> 
