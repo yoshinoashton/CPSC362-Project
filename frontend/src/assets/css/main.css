@@ -245,17 +245,19 @@ button {
 .buy-button:hover {
   background-color: var(--color-hover);
 }
+
 /* Login */
-.login-page * {
+.login-page *, .wallet-page *{
   text-align: center;
   align-items: center;
 }
 
-.login-page input {
+.login-page input, .wallet-page input {
   text-align: left;
 }
 
-.login-form {
+.login-form, .wallet-form {
+  background-color: white;
   border: 1px solid black;
   border-radius: 10px;
   width: 500px;
@@ -267,12 +269,12 @@ button {
   
 }
 
-.login-container {
+.login-container, .wallet-container {
   padding: 20px;
   width: 500px;
 }
 
-.login-container * {
+.login-container *, .wallet-container * {
   border: 1px solid black;
   padding: 15px;
   width: 275px;
@@ -291,6 +293,7 @@ button {
   text-align: center;
   color: blue;
 }
+
 
 /* User info page */
 .user-page {
