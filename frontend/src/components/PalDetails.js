@@ -6,13 +6,16 @@ export default function PalDetails({ userPal }) {
   const traits = userPal.traits;
 
   return (
-    <div className='listing-container'>
+    <div className='pal-container'>
       <img src={pal.imageURL} alt={pal.name} />
 
-      <div className='listing-details'>
+      <div className='pal-details'>
         <h4>{pal.name}</h4>
-        <p>{pal.type}</p>
-        <p>{userPal.level}</p>
+        <br></br>
+        <p><strong>About this pal</strong></p>
+        <p><strong>type:</strong> {pal.type}</p>
+        <p><strong>lvl:</strong> {userPal.level}</p>
+        <p><strong>traits:</strong></p>
         {traits && traits.map(trait => (
               <Trait trait={trait}/>
           ))}
