@@ -298,16 +298,15 @@ button {
 
 /* Inventory Pal */
 .pal-container {
-  display: inline-flex;
+  display: flex;
   padding: 20px;
 }
 
 .pal-container img {
-  height: 80%;
+  height: 75%;
 }
 
 .pal-details {
-  height: 80%;
   background-color: #f5f5f5;
   padding: 20px;
   margin-left: 30px;
@@ -319,7 +318,6 @@ button {
   transition: background-color 0.3s ease;
 }
 
-/* Hover effect */
 .pal-details:hover {
   background-color: lightgrey;
 }
