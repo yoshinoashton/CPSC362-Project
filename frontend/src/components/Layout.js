@@ -13,7 +13,6 @@ export default function Layout({children}) {
         <SideNavigation />
         {children}
       </div>
-      <Footer />
     </div>
   );
 }

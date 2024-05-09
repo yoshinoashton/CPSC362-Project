@@ -2,6 +2,7 @@ import Layout from "../components/Layout";
 import Select from 'react-select';
 import React, { useState, useEffect, useContext } from 'react';
 import { UserContext } from '../context/userContext';
+import { Navigate } from "react-router-dom";
 
 export default function ListingCreate() {
   const { username } = useContext(UserContext);
@@ -10,6 +11,7 @@ export default function ListingCreate() {
   const [price, setPrice] = useState('');
   const [description, setDescription] = useState('');
   const [isShiny, setIsShiny] = useState(false);
+  const [postResponse, setPostResponse] = useState(null);
 
   useEffect(() => {
     fetch(`/api/inventory/${username}`)
@@ -32,17 +34,16 @@ export default function ListingCreate() {
 
   const handleSubmit = (event) => {
     event.preventDefault(); // Prevent default form submission
-  
     // Construct payload
     const payload = {
-      palId: selectedOption ? selectedOption.value : null,
-      price: price,
+      userPal_id: selectedOption ? selectedOption.value : null,
+      cost: price,
       description: description,
       isShiny: isShiny,
     };
   
     // Make the POST request
-    fetch('/api/listings/create', {
+    fetch('/api/listings', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -53,6 +54,7 @@ export default function ListingCreate() {
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
+      setPostResponse(response);
       return response.json(); // or response.text() if your server responds with text
     })
     .then(data => {
@@ -70,6 +72,7 @@ export default function ListingCreate() {
     setDescription('');
     setIsShiny(false);
   };
+
 
   return (
     <Layout>
@@ -101,6 +104,9 @@ export default function ListingCreate() {
           <div className="pal-pic-preview">
             {selectedOption?.imageURL && <img src={selectedOption.imageURL} alt="Pal Preview" />}
           </div>
+          {postResponse && postResponse.success && (
+          <Navigate to="/" replace={true} />
+          )}
         </div>
       </div>
     </Layout>

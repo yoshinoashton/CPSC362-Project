@@ -36,6 +36,7 @@ const getUserListings = async (req, res) => {
 
 // CREATE a new listing
 const createListing = async (req, res) => {
+  console.log('working');
   const { userPal_id, description, cost} = req.body;
   try {
     // find pal
